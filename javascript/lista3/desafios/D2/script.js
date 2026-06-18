@@ -41,6 +41,8 @@ function registrar() {
         `Jogador ${jogador} venceu!`;
     return;
     }
+    
+    jogador = "X"
 }
 
 function verificarVitoria() {
@@ -84,8 +86,14 @@ function verificarVitoria() {
 }   
 
 function randomizarJogada() {
+    correto = false;
     do {
-        linha = Math.floor(Math.random() * 3) + 1;
-        coluna = Math.floor(Math.random() * 3) + 1;
-    } while ()
+        let linha = Math.floor(Math.random() * 3) + 1;
+        let coluna = Math.floor(Math.random() * 3) + 1;
+
+        if (document.getElementById(`${linha}-${coluna}`) == "*") {
+            correto = true;
+        }
+    } while (correto == false);
+    valores[linha][coluna] = jogador;
 }
