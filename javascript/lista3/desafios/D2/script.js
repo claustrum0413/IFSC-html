@@ -4,6 +4,7 @@ let input1 = document.getElementById("input1");
 let input2 = document.getElementById("input2");
 let input1P = document.getElementById("input1P");
 let input2P = document.getElementById("input2P");
+let botao = document.getElementById("botao");
 
 let valores = [
   ["*", "*", "*"],
@@ -33,13 +34,21 @@ function registrar() {
         return;
     }
 
+    if (verificarEmpate()) {
+        return;
+    }
+
     jogador = "O";
     randomizarJogada()
 
     if (verificarVitoria()) {
-    jogadorAtual.innerText =
-        `Jogador ${jogador} venceu!`;
-    return;
+        jogadorAtual.innerText =
+            `Jogador ${jogador} venceu!`;
+        return;
+    }
+
+    if (verificarEmpate()) {
+        return;
     }
     
     jogador = "X"
@@ -51,7 +60,12 @@ function verificarVitoria() {
             valores[i][0] == jogador &&
             valores[i][1] == jogador &&
             valores[i][2] == jogador
-        ) {
+            ) {
+            input1.remove();
+            input2.remove();
+            input1P.remove();
+            input2P.remove();
+            botao.remove();
             return true;
         }
     }
@@ -62,6 +76,11 @@ function verificarVitoria() {
             valores[1][i] == jogador &&
             valores[2][i] == jogador
         ) {
+            input1.remove();
+            input2.remove();
+            input1P.remove();
+            input2P.remove();
+            botao.remove();
             return true;
         }
     }
@@ -71,6 +90,11 @@ function verificarVitoria() {
         valores[1][1] == jogador &&
         valores[2][2] == jogador
     ) {
+        input1.remove();
+        input2.remove();
+        input1P.remove();
+        input2P.remove();
+        botao.remove();
         return true;
     }
 
@@ -79,21 +103,46 @@ function verificarVitoria() {
         valores[1][1] == jogador &&
         valores[2][0] == jogador
     ) {
+        input1.remove();
+        input2.remove();
+        input1P.remove();
+        input2P.remove();
+        botao.remove();
         return true;
     }
+        return false;
+}
 
-    return false;
-}   
+function verificarEmpate() {
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            if (valores[i][j] == "*") {
+                return false;
+            }
+        }
+    }
+    document.getElementById("jogador").innerText = "Empate!";
+    input1.remove();
+    input2.remove();
+    input1P.remove();
+    input2P.remove();
+    botao.remove();
+    return true;
+}
 
 function randomizarJogada() {
-    correto = false;
-    do {
-        let linha = Math.floor(Math.random() * 3) + 1;
-        let coluna = Math.floor(Math.random() * 3) + 1;
+    let correto = false;
+    let linha;
+    let coluna;
 
-        if (document.getElementById(`${linha}-${coluna}`) == "*") {
+    do {
+        linha = Math.floor(Math.random() * 3);
+        coluna = Math.floor(Math.random() * 3);
+
+        if (valores[linha][coluna] == "*") {
             correto = true;
         }
-    } while (correto == false);
+    } while (!correto);
     valores[linha][coluna] = jogador;
+    document.getElementById(`${linha}-${coluna}`).innerText = jogador;
 }
