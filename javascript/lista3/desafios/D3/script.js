@@ -6,6 +6,11 @@ let input2 = document.getElementById("input2");
 let input1P = document.getElementById("input1P");
 let input2P = document.getElementById("input2P");
 let botao = document.getElementById("botao");
+let tiros = document.getElementById("tiros");
+let certeiros = document.getElementById("certeiros");
+let porcentagem = document.getElementById("porcentagem");
+let tirostotais = 0;
+let acertos = 0;
 
 let valores1 = [
     ["*", "*", "*", "*", "*", "*", "*", "*", "*", "*"],
@@ -168,17 +173,27 @@ function atirar(linha, coluna, jogador) {
     let alvo = null;
     let celulaHTML = null;
     if (jogador === "Você") {
+        tirostotais += 1;
+        tiros.innerText = `Quantidade total de tiros: ${tirostotais}`
         alvo = valores2[linha][coluna]; 
         celulaHTML = document.getElementById(`c-${linha}-${coluna}`);
         if (alvo === "*") {
             jogada1.innerText = `${jogador} acertou água`;
             valores2[linha][coluna] = "X";
             celulaHTML.innerText = "X";
+            let operacaoPorcentagem = acertos/tirostotais*100;
+            let porcentagemLimitada = operacaoPorcentagem.toFixed(2)
+            porcentagem.innerText = `Porcentagem de acertos: ${porcentagemLimitada}%`
         }
         else {
             jogada1.innerText = `${jogador} acertou um ${obterNomeNavio(alvo)}!`;
             valores2[linha][coluna] = "💥";
             celulaHTML.innerText = "💥";
+            acertos += 1;
+            certeiros.innerText = `Quantidade de acertos: ${acertos}`
+            let operacaoPorcentagem = acertos/tirostotais*100;
+            let porcentagemLimitada = operacaoPorcentagem.toFixed(2)
+            porcentagem.innerText = `Porcentagem de acertos: ${porcentagemLimitada}%`
         }
     }
     else {
@@ -196,13 +211,11 @@ function atirar(linha, coluna, jogador) {
         }
     }
     if (verificarVitoria(valores1)) {
-        jogadorAtual.innerText =
-            `O computador venceu!`;
+        jogadorAtual.innerText = `O computador venceu!`;
         return;
     }
     else if (verificarVitoria(valores2)) {
-        jogadorAtual.innerText =
-            `Você venceu!`;
+        jogadorAtual.innerText = `Você venceu!`;
     }
 }
 
