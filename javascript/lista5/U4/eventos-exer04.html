@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Origem e Destino</title>
+    <link href="../eventos.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="form-container">
+        <label for="n1">Número 1:</label>
+        <input type="text" id="n1">
+        <label for="n2">Número 2:</label>
+        <input type="text" id="n2">
+        <label for="result">Resultado:</label>
+        <input type="text" id="result">
+        <button id="botaoSoma" type="submit">Somar</button>
+        <button id="botaoSub" type="submit">Subtrair</button>
+        <button id="botaoMult" type="submit">Multiplicar</button>
+        <button id="botaoDiv" type="submit">Dividir</button>
+    </div>
+    <script>
+        const inputCima = document.getElementById("n1");
+        const inputBaixo = document.getElementById("n2");
+        let resultado = document.getElementById("result")
+        const botaoSoma = document.getElementById("botaoSoma");
+        const botaoSub = document.getElementById("botaoSub");
+        const botaoMult = document.getElementById("botaoMult");
+        const botaoDiv = document.getElementById("botaoDiv");
+
+        botaoSoma.addEventListener('click', somar);
+        botaoSub.addEventListener('click', subtrair);
+        botaoMult.addEventListener('click', multiplicar);
+        botaoDiv.addEventListener('click', dividir);
+
+        function somar() {
+            let valor = Number(inputCima.value) + Number(inputBaixo.value);
+            resultado.value = valor;
+        }
+        function subtrair() {
+            let valor = Number(inputCima.value) - Number(inputBaixo.value);
+            resultado.value = valor;
+        }
+        function multiplicar() {
+            let valor = Number(inputCima.value) * Number(inputBaixo.value);
+            resultado.value = valor;
+        }
+        function dividir() {
+            let valor = Number(inputCima.value) / Number(inputBaixo.value);
+            resultado.value = valor;
+        }
+    </script>
+</body>
+
+</html>
