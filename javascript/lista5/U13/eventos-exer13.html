@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
+    <title>Exercício com Input e Parágrafos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        p {
+            font-size: 18px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin: 10px 0;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Exercício de Mudança de Conteúdo</h1>
+    <p>Digite um texto e clique no botão para alterar o conteúdo de um dos parágrafos abaixo.</p>
+
+    <input type="text" id="inputText" placeholder="Digite algo...">
+    <br>
+    <button id="changeButton">Mudar Conteúdo</button>
+
+    <p id="p1">Este é o primeiro parágrafo.</p>
+    <p id="p2">Este é o segundo parágrafo.</p>
+    <p id="p3">Este é o terceiro parágrafo.</p>
+
+</body>
+</html>

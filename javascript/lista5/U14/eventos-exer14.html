@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js" defer></script>
+    <title>Exercício com Botões e Divs</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Exercício com Botões e Divs</h1>
+    <p>Cada botão altera o estilo de um `div` específico.</p>
+
+    <button id="btn1">Altera o 1º Div</button>
+    <button id="btn2">Altera o 2º Div</button>
+    <button id="btn3">Altera o 3º Div</button>
+    <button id="btn4">Altera o 4º Div</button>
+
+    <div class="container">
+        <div id="box1" class="box">Div 1</div>
+        <div id="box2" class="box">Div 2</div>
+        <div id="box3" class="box">Div 3</div>
+        <div id="box4" class="box">Div 4</div>
+    </div>
+
+</body>
+</html>

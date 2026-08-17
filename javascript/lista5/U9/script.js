@@ -33,7 +33,7 @@ function registrar(linha, coluna) {
         return;
     }
     valores[linha][coluna] = jogador;
-    document.getElementById(`${linha}-${coluna}`).innerText = jogador;
+    document.getElementById(`${linha}-${coluna}`).textContentC = jogador;
 
     if (verificarVitoria()) {
         jogadorAtual.innerText =
