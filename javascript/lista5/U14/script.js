@@ -1,5 +1,5 @@
-const botoes = [1, 2, 3, 4]
-const divs = [1, 2, 3, 4]
+let botoes = [1, 2, 3, 4]
+let divs = [1, 2, 3, 4]
 
 for (let i = 1; i < 5; i++) {
   botoes[i-1] = document.getElementById(`btn${i}`);
