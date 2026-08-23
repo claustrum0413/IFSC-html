@@ -8,6 +8,7 @@ const inputCupom = document.getElementById("cupom");
 const botaoCupom = document.getElementById("aplicarCupom");
 const pCupom = document.getElementById("cupomAplicado");
 const totalParagrafo = document.getElementById("totalCarrinho");
+let frete = 0;
 
 listaProdutos.forEach(i => {
   const produto = document.querySelector(`[data-id="${i}"]`);
@@ -17,27 +18,29 @@ listaProdutos.forEach(i => {
 
 limpar.addEventListener('click', () => limparCarrinho());
 botaoFrete.addEventListener('click', () => calcularFrete(Number(inputFrete.value)));
-botaoCupom.addEventListener('click', () => ativarCupom(cupom.value));
+botaoCupom.addEventListener('click', () => ativarCupom(inputCupom.value));
 
 function calcularFrete(input) {
-  valorFrete.textContent = `${Math.trunc(input/10000000)},00`;
-  return Math.trunc(input/10000000);
+  frete = Math.trunc(input / 10000000);
+  valorFrete.textContent = `${frete},00`;
+  calcularTotal();
 }
 
 function calcularTotal() {
   let total = 0;
   const itensP = itens.querySelectorAll("p");
   itensP.forEach(item => {
-    total += item.getAttribute('data-preco');
+    total += Number(item.getAttribute('data-preco')) * Number(item.getAttribute('data-qnt'));
   });
-  if (calcularFrete()) {total += calcularFrete()}
+  total += frete;
   if (pCupom.style.display == "inline-block") {total = total*0.9}
-  totalParagrafo.textContent = total;
+  totalParagrafo.textContent = `R$${total.toFixed(2)}`;
 }
 
 function ativarCupom(input) {
   if (input == "DESCONTO10") {
     pCupom.style.display = "inline-block";
+    calcularTotal();
     return true;
   }
 }
@@ -61,8 +64,10 @@ function adicionarCarrinho(produto) {
     novoItem.setAttribute("data-preco", valor);
     novoItem.setAttribute("data-qnt", qnt);
   }
+  calcularTotal();
 }
 
 function limparCarrinho() {
   itens.innerHTML = '';
+  calcularTotal();
 }
